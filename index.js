@@ -59,10 +59,10 @@ toolbar.addEventListener("click", (e) => {
     audio.play();
 
     // Save current canvas state
-    const tempCanvas = document.createElement("tempCanvas");
-    const tempCtx = tempCanvas.getContext("2d");
+    const tempCanvas = document.createElement("canvas");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
+    const tempCtx = tempCanvas.getContext("2d");
     tempCtx.drawImage(canvas, 0, 0);
 
     // Change image
