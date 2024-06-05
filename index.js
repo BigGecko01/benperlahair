@@ -76,11 +76,11 @@ const clearCanvas = () => {
 toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
-    img.src = "bald.jpg";
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      ctx.drawImage(tempCanvas, 0, 0);
-    };
+    // img.src = "bald.jpg";
+    // img.onload = () => {
+    //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    //   ctx.drawImage(tempCanvas, 0, 0);
+    // };
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
