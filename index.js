@@ -16,8 +16,19 @@ let startY;
 toolbar.addEventListener("click", (e) => {
   if (e.target.id === "clear") {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    loadBackgroundImage();
+  } else if (e.target.id === "download") {
+    downloadCanvas();
   }
 });
+
+const loadBackgroundImage = () => {
+  const img = new Image();
+  img.src = "bald.jpg";
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  };
+};
 
 const startPosition = (e) => {
   isPainting = true;
@@ -49,6 +60,13 @@ const draw = (e) => {
   );
 };
 
+const downloadCanvas = () => {
+  const link = document.createElement("a");
+  link.download = "drawing.png";
+  link.href = canvas.toDataURL();
+  link.click();
+};
+
 canvas.addEventListener("mousedown", startPosition);
 canvas.addEventListener("mouseup", finishedPosition);
 canvas.addEventListener("mousemove", draw);
@@ -57,3 +75,4 @@ canvas.addEventListener("touchstart", startPosition);
 canvas.addEventListener("touchend", finishedPosition);
 canvas.addEventListener("touchmove", draw);
 
+loadBackgroundImage();
