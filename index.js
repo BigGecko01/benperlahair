@@ -27,33 +27,45 @@ const resizeCanvas = () => {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
-function shareCanvas() {
-  canvas.toBlob((blob) => {
-    const file = new File([blob], "drawing.png", { type: "image/png" });
-    const filesArray = [file];
+const shareCanvas = async () => {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      const file = new File([blob], "drawing.png", { type: "image/png" });
+      const filesArray = [file];
 
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Bald Ben",
-          text: "Check out this drawing of Bald Ben I made on benjaminperla.hair!",
-          files: filesArray,
-        })
-        .catch((error) => console.error("Error sharing", error));
-    } else {
-      downloadCanvas();
-    }
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "Bald Ben",
+            text: "Check out this drawing of Bald Ben I made on benjaminperla.hair!",
+            files: filesArray,
+          })
+          .then(resolve)
+          .catch((error) => {
+            console.error("Error sharing", error);
+            reject(error);
+          });
+      } else {
+        downloadCanvas();
+        resolve();
+      }
+    });
   });
-}
+};
 
-function clearCanvas() {
+const clearCanvas = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-}
+};
 
-toolbar.addEventListener("click", (e) => {
+toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
+    img.src = "bald.jpg";
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(tempCanvas, 0, 0);
+    };
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
@@ -65,13 +77,14 @@ toolbar.addEventListener("click", (e) => {
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
 
-    // Change image
+    // Change image and clear canvas asynchronously
     img.src = "smile.jpg";
-    img.onload = () => {
-      // Draw new image and restore saved state
+    img.onload = async () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
-      shareCanvas();
+
+      await shareCanvas();
+      clearCanvas();
     };
   }
 });
