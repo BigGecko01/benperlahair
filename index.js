@@ -60,9 +60,9 @@ toolbar.addEventListener("click", (e) => {
 
     // Save current canvas state
     const tempCanvas = document.createElement("tempCanvas");
+    const tempCtx = tempCanvas.getContext("2d");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
-    const tempCtx = tempCanvas.getContext("2d");
     tempCtx.drawImage(canvas, 0, 0);
 
     // Change image
@@ -72,7 +72,6 @@ toolbar.addEventListener("click", (e) => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
       shareCanvas();
-      document.body.removeChild(tempCanvas); // Clean up the temporary canvas
     };
   }
 });
