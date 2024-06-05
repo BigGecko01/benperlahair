@@ -62,7 +62,14 @@ toolbar.addEventListener("click", (e) => {
     const tempCanvas = document.createElement("canvas");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
+    document.body.appendChild(tempCanvas); // Append to body to ensure it's an HTMLCanvasElement
     const tempCtx = tempCanvas.getContext("2d");
+
+    if (!tempCtx) {
+      console.error("Failed to get tempCtx");
+      return;
+    }
+
     tempCtx.drawImage(canvas, 0, 0);
 
     // Change image
@@ -72,6 +79,7 @@ toolbar.addEventListener("click", (e) => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
       shareCanvas();
+      document.body.removeChild(tempCanvas); // Clean up the temporary canvas
     };
   }
 });
