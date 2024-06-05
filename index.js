@@ -15,7 +15,6 @@ img.src = "bald.jpg";
 img.onload = () => {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
-  console.log('resized');
 };
 
 const resizeCanvas = () => {
@@ -77,7 +76,7 @@ const clearCanvas = () => {
 toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
-    canDraw = true;
+    canPaint = true;
     // img.src = "bald.jpg";
     // img.onload = () => {
     //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -101,14 +100,13 @@ toolbar.addEventListener("click", async (e) => {
       ctx.drawImage(tempCanvas, 0, 0);
 
       await shareCanvas();
-      canDraw = false;
+      canPaint = false;
       // clearCanvas();
     };
   }
 });
 
 const startPosition = (e) => {
-  if (!canPaint) { return; }
   isPainting = true;
   startX = (e.clientX || e.touches[0].clientX) - canvas.offsetLeft;
   startY = (e.clientY || e.touches[0].clientY) - canvas.offsetTop;
@@ -122,6 +120,7 @@ const finishedPosition = () => {
 
 const draw = (e) => {
   if (!isPainting) return;
+  if (!canPaint) { return; }  
 
   ctx.lineWidth = lineWidth;
   ctx.lineCap = "round";
