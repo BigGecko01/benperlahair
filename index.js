@@ -19,13 +19,18 @@ container.onload = () => {
 
 const resizeCanvas = () => {
   const aspectRatio = img.width / img.height;
+  let width;
+  let height;
   if (window.innerWidth / window.innerHeight > aspectRatio) {
-    container.style.height = window.innerHeight - toolbar.offsetHeight;
-    container.style.width = container.style.height * aspectRatio;
+    height = window.innerHeight - toolbar.offsetHeight;
+    width = height * aspectRatio;
   } else {
-    container.style.width = window.innerWidth;
-    container.style.height = container.style.width / aspectRatio;
+    width = window.innerWidth;
+    height = width / aspectRatio;
   }
+
+  container.style.width = width + "px";
+  container.style.height = height + "px";
 
   container.style.marginTop = `${toolbar.offsetHeight}px`;
   // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);

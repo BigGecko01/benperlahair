@@ -47,4 +47,8 @@ canvas {
   height: 100%;
   width: 100%;
 }
-
+#bald-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
