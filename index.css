@@ -34,6 +34,17 @@ h1 {
 }
 canvas {
   display: block;
+  z-index: 1;
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#bald-bg {
   z-index: 0;
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 

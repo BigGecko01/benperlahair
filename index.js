@@ -1,6 +1,8 @@
 const canvas = document.getElementById("drawing-board");
 const toolbar = document.getElementById("toolbar");
 const ctx = canvas.getContext("2d");
+const bg = document.getElementById("bald-bg");
+const container = document.getElementById("bald-container");
 
 let isPainting = false;
 let lineWidth = 5;
@@ -17,14 +19,15 @@ img.onload = () => {
 const resizeCanvas = () => {
   const aspectRatio = img.width / img.height;
   if (window.innerWidth / window.innerHeight > aspectRatio) {
-    canvas.height = window.innerHeight - toolbar.offsetHeight;
-    canvas.width = canvas.height * aspectRatio;
+    container.height = window.innerHeight - toolbar.offsetHeight;
+    container.width = height * aspectRatio;
   } else {
-    canvas.width = window.innerWidth;
-    canvas.height = canvas.width / aspectRatio;
+    container.width = window.innerWidth;
+    container.height = width / aspectRatio;
   }
+
   canvas.style.marginTop = `${toolbar.offsetHeight}px`;
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
 const shareCanvas = async () => {
