@@ -40,7 +40,7 @@ toolbar.addEventListener("click", (e) => {
         navigator
           .share({
             title: "Bald Ben",
-            text: "Check out this drawing of Bald Ben I made!",
+            text: "Check out this drawing of Bald Ben I made on bejaminperla.hair!",
             files: filesArray,
           })
           .catch((error) => console.error("Error sharing", error));
