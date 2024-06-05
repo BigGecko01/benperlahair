@@ -32,7 +32,23 @@ toolbar.addEventListener("click", (e) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   } else if (e.target.id === "download") {
-    downloadCanvas();
+    canvas.toBlob((blob) => {
+      const file = new File([blob], "drawing.png", { type: "image/png" });
+      const filesArray = [file];
+
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "Bald Ben",
+            text: "Check out this drawing of Bald Ben I made!",
+            files: filesArray,
+          })
+          .catch((error) => console.error("Error sharing", error));
+      } else {
+        alert("Web Share API is not supported in your browser :(");
+      }
+    });
+    // downloadCanvas();
   }
 });
 
