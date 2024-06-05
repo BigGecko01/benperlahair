@@ -17,19 +17,23 @@ h1 {
 .container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #toolbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 1;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
   z-index: 0;
 }
 
