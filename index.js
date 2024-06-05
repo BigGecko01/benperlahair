@@ -59,7 +59,7 @@ const shareCanvas = async () => {
         navigator
           .share({
             title: "Bald Ben",
-            text: "Check out this drawing of Bald Ben I made on https://benjaminperla.hair!",
+            text: "Check out this drawing of Bald Ben I made on https://benjaminperla.hair/ !",
             files: filesArray,
           })
           .then(resolve)
