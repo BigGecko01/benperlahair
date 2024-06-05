@@ -59,7 +59,7 @@ toolbar.addEventListener("click", (e) => {
     audio.play();
 
     // Save current canvas state
-    const tempCanvas = document.createElement("tempCanvas");
+    const tempCanvas = document.createElement("canvas");
     const tempCtx = tempCanvas.getContext("2d");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
