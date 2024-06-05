@@ -5,7 +5,8 @@ const bg = document.getElementById("bald-bg");
 const container = document.getElementById("bald-container");
 
 let isPainting = false;
-let lineWidth = 15;
+let canPaint = true;
+let lineWidth = 12;
 let startX;
 let startY;
 let img = new Image();
@@ -76,6 +77,7 @@ const clearCanvas = () => {
 toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
+    canDraw = true;
     // img.src = "bald.jpg";
     // img.onload = () => {
     //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -99,12 +101,14 @@ toolbar.addEventListener("click", async (e) => {
       ctx.drawImage(tempCanvas, 0, 0);
 
       await shareCanvas();
+      canDraw = false;
       // clearCanvas();
     };
   }
 });
 
 const startPosition = (e) => {
+  if (!canPaint) { return; }
   isPainting = true;
   startX = (e.clientX || e.touches[0].clientX) - canvas.offsetLeft;
   startY = (e.clientY || e.touches[0].clientY) - canvas.offsetTop;
