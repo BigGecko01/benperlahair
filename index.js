@@ -11,7 +11,7 @@ let startY;
 let img = new Image();
 
 img.src = "bald.jpg";
-container.onload = () => {
+img.onload = () => {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
   console.log('resized');
