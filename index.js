@@ -27,28 +27,37 @@ const resizeCanvas = () => {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
+function shareCanvas() {
+  canvas.toBlob((blob) => {
+    const file = new File([blob], "drawing.png", { type: "image/png" });
+    const filesArray = [file];
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Bald Ben",
+          text: "Check out this drawing of Bald Ben I made on bejaminperla.hair!",
+          files: filesArray,
+        })
+        .catch((error) => console.error("Error sharing", error));
+    } else {
+      // alert("Web Share API is not supported in your browser :(");
+      // Fallback to download
+      downloadCanvas();
+    }
+  });
+}
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+}
+
 toolbar.addEventListener("click", (e) => {
   if (e.target.id === "clear") {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    clearCanvas();
   } else if (e.target.id === "download") {
-    canvas.toBlob((blob) => {
-      const file = new File([blob], "drawing.png", { type: "image/png" });
-      const filesArray = [file];
-
-      if (navigator.share) {
-        navigator
-          .share({
-            title: "Bald Ben",
-            text: "Check out this drawing of Bald Ben I made on bejaminperla.hair!",
-            files: filesArray,
-          })
-          .catch((error) => console.error("Error sharing", error));
-      } else {
-        alert("Web Share API is not supported in your browser :(");
-      }
-    });
-    // downloadCanvas();
+    shareCanvas();
   }
 });
 
