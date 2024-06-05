@@ -36,7 +36,7 @@ function shareCanvas() {
       navigator
         .share({
           title: "Bald Ben",
-          text: "Check out this drawing of Bald Ben I made on bejaminperla.hair!",
+          text: "Check out this drawing of Bald Ben I made on benjaminperla.hair!",
           files: filesArray,
         })
         .catch((error) => console.error("Error sharing", error));
@@ -120,3 +120,4 @@ canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("touchstart", startPosition);
 canvas.addEventListener("touchend", finishedPosition);
 canvas.addEventListener("touchmove", draw);
+
