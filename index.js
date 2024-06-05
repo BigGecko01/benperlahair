@@ -57,6 +57,10 @@ toolbar.addEventListener("click", (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
   } else if (e.target.id === "download") {
+    var audio = new Audio("wink.wav");
+    audio.play();
+    // change img
+    img.src = "smile.jpg"
     shareCanvas();
   }
 });
