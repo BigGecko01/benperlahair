@@ -20,10 +20,10 @@ const resizeCanvas = () => {
   const aspectRatio = img.width / img.height;
   if (window.innerWidth / window.innerHeight > aspectRatio) {
     container.height = window.innerHeight - toolbar.offsetHeight;
-    container.width = height * aspectRatio;
+    container.width = container.height * aspectRatio;
   } else {
     container.width = window.innerWidth;
-    container.height = width / aspectRatio;
+    container.height = container.width / aspectRatio;
   }
 
   canvas.style.marginTop = `${toolbar.offsetHeight}px`;
