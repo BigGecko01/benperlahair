@@ -26,7 +26,7 @@ const resizeCanvas = () => {
     container.height = container.width / aspectRatio;
   }
 
-  canvas.style.marginTop = `${toolbar.offsetHeight}px`;
+  container.style.marginTop = `${toolbar.offsetHeight}px`;
   // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
