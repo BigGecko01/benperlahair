@@ -80,7 +80,7 @@ toolbar.addEventListener("click", async (e) => {
     // img.onload = () => {
     //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     //   ctx.drawImage(tempCanvas, 0, 0);
-    // };
+    // };  
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
