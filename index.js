@@ -5,7 +5,7 @@ const bg = document.getElementById("bald-bg");
 const container = document.getElementById("bald-container");
 
 let isPainting = false;
-let lineWidth = 5;
+let lineWidth = 15;
 let startX;
 let startY;
 let img = new Image();
@@ -99,7 +99,7 @@ toolbar.addEventListener("click", async (e) => {
       ctx.drawImage(tempCanvas, 0, 0);
 
       await shareCanvas();
-      clearCanvas();
+      // clearCanvas();
     };
   }
 });
