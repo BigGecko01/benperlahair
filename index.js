@@ -41,8 +41,6 @@ function shareCanvas() {
         })
         .catch((error) => console.error("Error sharing", error));
     } else {
-      // alert("Web Share API is not supported in your browser :(");
-      // Fallback to download
       downloadCanvas();
     }
   });
@@ -59,13 +57,14 @@ toolbar.addEventListener("click", (e) => {
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
+
     // Save current canvas state
-    const tempCanvas = document.createElement("canvas");
+    const tempCanvas = document.createElement("tempCanvas");
     const tempCtx = tempCanvas.getContext("2d");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
-    
+
     // Change image
     img.src = "smile.jpg";
     img.onload = () => {
