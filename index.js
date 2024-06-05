@@ -32,6 +32,12 @@ const resizeCanvas = () => {
   container.style.width = width + "px";
   container.style.height = height + "px";
 
+  bg.style.width = width + "px";
+  bg.style.height = height + "px";
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+  // height: 100% includes the height of the margin even if it's on the wrapper and honestly i do not care enough -tate
+
   container.style.marginTop = `${toolbar.offsetHeight}px`;
   // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
