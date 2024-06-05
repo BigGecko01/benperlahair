@@ -6,7 +6,7 @@ const container = document.getElementById("bald-container");
 
 let isPainting = false;
 let canPaint = true;
-let lineWidth = 12;
+let lineWidth = 10;
 let startX;
 let startY;
 let img = new Image();
@@ -34,9 +34,14 @@ const resizeCanvas = () => {
 
   bg.style.width = width + "px";
   bg.style.height = height + "px";
+  // height: 100% includes the height of the margin even if it's on the wrapper and honestly i do not care enough
+
+  // clearing canvas resizes so i have to do this
+  let tempImg = new Image();
+  tempImg.src = canvas.toDataURL();
   canvas.width = width;
   canvas.height = height;
-  // height: 100% includes the height of the margin even if it's on the wrapper and honestly i do not care enough
+  ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
 
   container.style.marginTop = `${toolbar.offsetHeight}px`;
   // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
