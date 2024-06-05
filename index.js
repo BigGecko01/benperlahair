@@ -20,11 +20,11 @@ container.onload = () => {
 const resizeCanvas = () => {
   const aspectRatio = img.width / img.height;
   if (window.innerWidth / window.innerHeight > aspectRatio) {
-    container.height = window.innerHeight - toolbar.offsetHeight;
-    container.width = container.height * aspectRatio;
+    container.style.height = window.innerHeight - toolbar.offsetHeight;
+    container.style.width = container.style.height * aspectRatio;
   } else {
-    container.width = window.innerWidth;
-    container.height = container.width / aspectRatio;
+    container.style.width = window.innerWidth;
+    container.style.height = container.style.width / aspectRatio;
   }
 
   container.style.marginTop = `${toolbar.offsetHeight}px`;
