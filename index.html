@@ -9,15 +9,34 @@
   <body>
     <section class="container">
       <div id="toolbar">
-        <p style="margin: 0 0 5px 0;">Draw to give Ben his hair back!</p>
+        <p style="margin: 0 0 5px 0">Draw to give Ben his hair back!</p>
         <div>
           <button id="clear">Clear</button>
           <button id="download">Done</button>
         </div>
+        <div id="color-selector" class="color-selector">
+          <button class="color-button" style="background-color: red"></button>
+          <button class="color-button" style="background-color: blue"></button>
+          <button class="color-button" style="background-color: green"></button>
+          <button
+            class="color-button"
+            style="background-color: yellow"
+          ></button>
+          <button
+            class="color-button"
+            style="background-color: orange"
+          ></button>
+          <button
+            class="color-button"
+            style="background-color: purple"
+          ></button>
+          <button class="color-button" style="background-color: pink"></button>
+          <button class="color-button" style="background-color: brown"></button>
+        </div>
       </div>
       <div id="bald-wrapper">
         <div id="bald-container">
-          <img id="bald-bg" src="bald.jpg">
+          <img id="bald-bg" src="bald.jpg" />
           <canvas id="drawing-board"></canvas>
         </div>
       </div>

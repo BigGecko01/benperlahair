@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
   color: rgb(255, 255, 255);
   background-color: rgb(0, 0, 0);
 }
@@ -55,3 +54,20 @@ canvas {
 p {
   margin: 0 0 5px 0;
 }
+
+.color-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.color-button {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
