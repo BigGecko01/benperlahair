@@ -9,6 +9,7 @@ let canPaint = true;
 let lineWidth = 10;
 let startX;
 let startY;
+let currentColor = "#000000"; // Default color is black
 let img = new Image();
 
 img.src = "bald.jpg";
@@ -133,6 +134,7 @@ const draw = (e) => {
 
   ctx.lineWidth = lineWidth;
   ctx.lineCap = "round";
+  ctx.strokeStyle = currentColor;
 
   ctx.lineTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
@@ -160,3 +162,9 @@ canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("touchstart", startPosition);
 canvas.addEventListener("touchend", finishedPosition);
 canvas.addEventListener("touchmove", draw);
+
+document.querySelectorAll(".color-button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    currentColor = e.target.style.backgroundColor;
+  });
+});

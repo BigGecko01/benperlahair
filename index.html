@@ -9,15 +9,43 @@
   <body>
     <section class="container">
       <div id="toolbar">
-        <p style="margin: 0 0 5px 0;">Draw to give Ben his hair back!</p>
+        <p style="margin: 0 0 5px 0">Draw to give Ben his hair back!</p>
         <div>
           <button id="clear">Clear</button>
           <button id="download">Done</button>
         </div>
+        <div id="color-selector" class="color-selector">
+          <div class="color-row">
+            <button class="color-button" style="background-color: #000000">
+              <div class="color-inner" style="background-color: #000000"></div>
+            </button>
+            <button class="color-button" style="background-color: #473421">
+              <div class="color-inner" style="background-color: #473421"></div>
+            </button>
+            <button class="color-button" style="background-color: #ab9a6c">
+              <div class="color-inner" style="background-color: #ab9a6c"></div>
+            </button>
+            <button class="color-button" style="background-color: #e6dbcd">
+              <div class="color-inner" style="background-color: #e6dbcd"></div>
+            </button>
+            <button class="color-button" style="background-color: orange">
+              <div class="color-inner" style="background-color: orange"></div>
+            </button>
+            <button class="color-button" style="background-color: #c81a30">
+              <div class="color-inner" style="background-color: #c81a30"></div>
+            </button>
+            <button class="color-button" style="background-color: #1755b8">
+              <div class="color-inner" style="background-color: #1755b8"></div>
+            </button>
+            <button class="color-button" style="background-color: purple">
+              <div class="color-inner" style="background-color: purple"></div>
+            </button>
+          </div>
+        </div>
       </div>
       <div id="bald-wrapper">
         <div id="bald-container">
-          <img id="bald-bg" src="bald.jpg">
+          <img id="bald-bg" src="bald.jpg" />
           <canvas id="drawing-board"></canvas>
         </div>
       </div>
