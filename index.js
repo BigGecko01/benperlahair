@@ -6,7 +6,6 @@ const container = document.getElementById("bald-container");
 
 let isPainting = false;
 let canPaint = true;
-let lineWidth = 10;
 let startX;
 let startY;
 let img = new Image();
@@ -129,7 +128,7 @@ const draw = (e) => {
   if (!isPainting) return;
   if (!canPaint) { return; }  
 
-  ctx.lineWidth = lineWidth;
+  ctx.lineWidth = 10;
   ctx.lineCap = "round";
 
   ctx.lineTo(
