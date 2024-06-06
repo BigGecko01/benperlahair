@@ -57,17 +57,34 @@ p {
 
 .color-selector {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 0 0;
+}
+
+.color-row {
+  display: flex;
 }
 
 .color-button {
   width: 40px;
+  background-color: gray;
   height: 40px;
   margin: 5px;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
+  position: relative;
+}
+
+.color-inner {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 3px;
 }
 
