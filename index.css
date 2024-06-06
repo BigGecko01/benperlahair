@@ -55,3 +55,29 @@ canvas {
 p {
   margin: 0 0 5px 0;
 }
+
+.color-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 0 0;
+}
+
+.color-row {
+  display: flex;
+}
+
+.color-button {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  border: 3px solid lightgray;
+  cursor: pointer;
+  position: relative;
+}
+
+.color-inner {
+  width: 100%;
+  height: 100%;
+}
+

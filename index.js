@@ -8,6 +8,7 @@ let isPainting = false;
 let canPaint = true;
 let startX;
 let startY;
+let currentColor = "#000000"; // Default color is black
 let img = new Image();
 
 img.src = "bald.jpg";
@@ -17,7 +18,7 @@ img.onload = () => {
 };
 
 const resizeCanvas = () => {
-  console.log('i am resizing');
+  console.log("i am resizing");
 
   const aspectRatio = img.width / img.height;
   let width;
@@ -58,7 +59,7 @@ const shareCanvas = async () => {
         navigator
           .share({
             title: "Bald Ben",
-            text: "Check out this drawing of Bald Ben I made on benjaminperla.hair!",
+            text: "Check out this drawing of Bald Ben I made on https://benjaminperla.hair/ !",
             files: filesArray,
           })
           .then(resolve)
@@ -87,7 +88,7 @@ toolbar.addEventListener("click", async (e) => {
     // img.onload = () => {
     //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     //   ctx.drawImage(tempCanvas, 0, 0);
-    // };  
+    // };
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
@@ -126,10 +127,13 @@ const finishedPosition = () => {
 
 const draw = (e) => {
   if (!isPainting) return;
-  if (!canPaint) { return; }  
+  if (!canPaint) {
+    return;
+  }
 
   ctx.lineWidth = 10;
   ctx.lineCap = "round";
+  ctx.strokeStyle = currentColor;
 
   ctx.lineTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
@@ -158,3 +162,8 @@ canvas.addEventListener("touchstart", startPosition);
 canvas.addEventListener("touchend", finishedPosition);
 canvas.addEventListener("touchmove", draw);
 
+document.querySelectorAll(".color-button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    currentColor = e.target.style.backgroundColor;
+  });
+});
