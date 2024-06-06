@@ -18,7 +18,6 @@ img.onload = () => {
 };
 
 const resizeCanvas = () => {
-  console.log("i am resizing");
 
   const aspectRatio = img.width / img.height;
   let width;
