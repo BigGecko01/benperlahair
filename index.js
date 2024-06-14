@@ -93,7 +93,7 @@ toolbar.addEventListener("click", async (e) => {
 
     const tempCanvas = document.createElement("canvas");
     const tempCtx = tempCanvas.getContext("2d");
-    tempCanvas.width = canvas.width;ctx
+    tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
 
