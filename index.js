@@ -10,8 +10,8 @@ let startX;
 let startY;
 let currentColor = "#000000"; // Default color is black
 let img = new Image();
-let currentImage = "bald.jpg";
 
+let currentImage = "bald.jpg";
 img.src = currentImage;
 img.onload = () => {
   resizeCanvas();
@@ -35,13 +35,16 @@ const resizeCanvas = () => {
   bg.style.width = width + "px";
   bg.style.height = height + "px";
 
+  // Save current canvas state
   let tempImg = new Image();
+  tempImg.crossOrigin = "anonymous"; // Allow cross-origin access
   tempImg.src = canvas.toDataURL();
   tempImg.onload = () => {
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
     let imageToDraw = new Image();
+    imageToDraw.crossOrigin = "anonymous"; // Allow cross-origin access
     imageToDraw.src = currentImage;
     imageToDraw.onload = () => {
       ctx.drawImage(imageToDraw, 0, 0, canvas.width, canvas.height);
@@ -79,26 +82,26 @@ const shareCanvas = async () => {
 
 const clearCanvas = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
 toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
     canPaint = true;
+   
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
 
-    // Save current canvas state
     const tempCanvas = document.createElement("canvas");
     const tempCtx = tempCanvas.getContext("2d");
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
 
-    // Change image and clear canvas asynchronously
     img.src = "smile.jpg";
-    currentImage = "smile.jpg"; // Update the current image
+    currentImage.src = "smile.jpg"
     img.onload = async () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
@@ -133,13 +136,13 @@ const draw = (e) => {
 
   ctx.lineTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
-    (e.clientY || e.touches[0].clientY) - canvas.offsetTop
+    (e.clientY || e.touches[0].clientY) - canvas.offsetTop,
   );
   ctx.stroke();
   ctx.beginPath();
   ctx.moveTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
-    (e.clientY || e.touches[0].clientY) - canvas.offsetTop
+    (e.clientY || e.touches[0].clientY) - canvas.offsetTop,
   );
 };
 
