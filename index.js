@@ -10,15 +10,15 @@ let startX;
 let startY;
 let currentColor = "#000000"; // Default color is black
 let img = new Image();
+let currentImage = "bald.jpg";
 
-img.src = "bald.jpg";
+img.src = currentImage;
 img.onload = () => {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 };
 
 const resizeCanvas = () => {
-
   const aspectRatio = img.width / img.height;
   let width;
   let height;
@@ -32,20 +32,23 @@ const resizeCanvas = () => {
 
   container.style.width = width + "px";
   container.style.height = height + "px";
-
   bg.style.width = width + "px";
   bg.style.height = height + "px";
-  // height: 100% includes the height of the margin even if it's on the wrapper and honestly i do not care enough
 
-  // clearing canvas resizes so i have to do this
   let tempImg = new Image();
   tempImg.src = canvas.toDataURL();
-  canvas.width = width;
-  canvas.height = height;
-  ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+  tempImg.onload = () => {
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+    let imageToDraw = new Image();
+    imageToDraw.src = currentImage;
+    imageToDraw.onload = () => {
+      ctx.drawImage(imageToDraw, 0, 0, canvas.width, canvas.height);
+    };
+  };
 
   container.style.marginTop = `${toolbar.offsetHeight}px`;
-  // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
 const shareCanvas = async () => {
@@ -76,18 +79,12 @@ const shareCanvas = async () => {
 
 const clearCanvas = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 };
 
 toolbar.addEventListener("click", async (e) => {
   if (e.target.id === "clear") {
     clearCanvas();
     canPaint = true;
-    // img.src = "bald.jpg";
-    // img.onload = () => {
-    //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    //   ctx.drawImage(tempCanvas, 0, 0);
-    // };
   } else if (e.target.id === "download") {
     var audio = new Audio("wink.wav");
     audio.play();
@@ -101,13 +98,13 @@ toolbar.addEventListener("click", async (e) => {
 
     // Change image and clear canvas asynchronously
     img.src = "smile.jpg";
+    currentImage = "smile.jpg"; // Update the current image
     img.onload = async () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
 
       await shareCanvas();
       canPaint = false;
-      // clearCanvas();
     };
   }
 });
@@ -136,13 +133,13 @@ const draw = (e) => {
 
   ctx.lineTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
-    (e.clientY || e.touches[0].clientY) - canvas.offsetTop,
+    (e.clientY || e.touches[0].clientY) - canvas.offsetTop
   );
   ctx.stroke();
   ctx.beginPath();
   ctx.moveTo(
     (e.clientX || e.touches[0].clientX) - canvas.offsetLeft,
-    (e.clientY || e.touches[0].clientY) - canvas.offsetTop,
+    (e.clientY || e.touches[0].clientY) - canvas.offsetTop
   );
 };
 
