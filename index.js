@@ -37,15 +37,12 @@ const resizeCanvas = () => {
 
   // Save current canvas state
   let tempImg = new Image();
-  tempImg.crossOrigin = "anonymous"; // Allow cross-origin access
   tempImg.src = canvas.toDataURL();
   tempImg.onload = () => {
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
     let imageToDraw = new Image();
-    imageToDraw.crossOrigin = "anonymous"; // Allow cross-origin access
-    imageToDraw.src = currentImage;
     imageToDraw.onload = () => {
       ctx.drawImage(imageToDraw, 0, 0, canvas.width, canvas.height);
     };
@@ -96,7 +93,7 @@ toolbar.addEventListener("click", async (e) => {
 
     const tempCanvas = document.createElement("canvas");
     const tempCtx = tempCanvas.getContext("2d");
-    tempCanvas.width = canvas.width;
+    tempCanvas.width = canvas.width;ctx
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
 
