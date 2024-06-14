@@ -2,7 +2,7 @@
 
 ## About
 
-This site celebrates our best friend, Benjamin Perla, and allows users to draw hair on his bald head. The site allows for downloading your completed art work and sharing it on mobile devices via the WebShare API. Please feel free to suggest ideas or even submit a pull request with your feature to this project for review. 
+This site celebrates our best friend, Benjamin Perla, and allows users to draw hair on his bald head. The site allows for downloading your completed artwork and sharing it on mobile devices via the WebShare API. Please feel free to suggest ideas via an issue or even submit a pull request with your feature to this project for review. 
 
 ## Contributing
 
