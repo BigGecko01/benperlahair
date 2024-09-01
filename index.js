@@ -164,9 +164,5 @@ document.querySelectorAll(".color-button").forEach((button) => {
   });
 });
 
-console.log("  ____ ___ _____ _   _ _   _ ____");
-console.log(" / ___|_ _|_   _| | | | | | | __ ) _");
-console.log("| |  _ | |  | | | |_| | | | |  _ \\(_)");
-console.log("| |_| || |  | | |  _  | |_| | |_)| _");
-console.log(" \\____|___| |_| |_| |_|\\___/|____/(_)");
+console.log("  ____ ___ _____ _   _ _   _ ____\n / ___|_ _|_   _| | | | | | | __ ) _\n| |  _ | |  | | | |_| | | | |  _ \\(_)\n| |_| || |  | | |  _  | |_| | |_)| _\n \\____|___| |_| |_| |_|\\___/|____/(_)");
 console.log("https://github.com/BigGecko01/benperlahair");
