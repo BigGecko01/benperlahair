@@ -163,3 +163,10 @@ document.querySelectorAll(".color-button").forEach((button) => {
     currentColor = e.target.style.backgroundColor;
   });
 });
+
+console.log("  ____ ___ _____ _   _ _   _ ____");
+console.log(" / ___|_ _|_   _| | | | | | | __ ) _");
+console.log("| |  _ | |  | | | |_| | | | |  _ \\(_)");
+console.log("| |_| || |  | | |  _  | |_| | |_)| _");
+console.log(" \\____|___| |_| |_| |_|\\___/|____/(_)");
+console.log("https://github.com/BigGecko01/benperlahair");
