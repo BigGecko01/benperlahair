@@ -11,7 +11,7 @@ let startY;
 let currentColor = "#000000"; // Default color is black
 let img = new Image();
 
-let currentImage = "bald.jpg";
+let currentImage = "images/bald.jpg";
 img.src = currentImage;
 img.onload = () => {
   resizeCanvas();
@@ -88,7 +88,7 @@ toolbar.addEventListener("click", async (e) => {
     canPaint = true;
    
   } else if (e.target.id === "download") {
-    var audio = new Audio("wink.wav");
+    var audio = new Audio("audio/wink.wav");
     audio.play();
 
     const tempCanvas = document.createElement("canvas");
@@ -97,8 +97,8 @@ toolbar.addEventListener("click", async (e) => {
     tempCanvas.height = canvas.height;
     tempCtx.drawImage(canvas, 0, 0);
 
-    img.src = "smile.jpg";
-    currentImage.src = "smile.jpg"
+    img.src = "images/smile.jpg";
+    currentImage.src = "images/smile.jpg"
     img.onload = async () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.drawImage(tempCanvas, 0, 0);
